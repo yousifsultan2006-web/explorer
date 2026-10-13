@@ -32,6 +32,33 @@ public class ExplorerSearch {
         // Implement your method here!
         // Please also make more test cases
         // I STRONGLY RECOMMEND testing some helpers you might make too
-        return -1;
+        if (island == null) {
+            return 0;
+        }
+        int startRow = 0;
+        int startCol = 0;
+        boolean found = false;
+
+        boolean[][] visited = new boolean[island.length][island[0].length];
+        for (int[] row : island) {
+            startCol = 0;
+            if (found){
+                break;
+            }
+
+            for (int slot : row) {
+                if(slot == 0) {
+                    found = true;
+                     break;
+                }
+                startCol++;
+            }
+            if (found) {
+                break;
+            }
+            startRow++;
+        }
+
+        return explore(island, startRow, startCol, visited);
     }
 }
